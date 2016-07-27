@@ -1,0 +1,49 @@
+// by eddie
+body {padding-top:60px;}
+.navbar {
+    /*padding-top: 15px;*/
+    /*padding-bottom: 15px;*/
+    border: 0;
+    border-radius: 0;
+    margin-bottom: 0;
+    font-size: 12px;
+    letter-spacing: 4px;
+    opacity: 0.9;
+}
+.jumbotron img {max-width:400px; width:100%; margin:auto;}
+
+#header {
+	margin-top: 30px;
+}
+
+#footer {
+	margin-top: 30px;
+	border-top: 1px solid #eeeeee;
+	padding-top: 30px;
+	color: #777777;
+}
+
+.gallery {border-bottom:1px solid #eee; margin-bottom:40px; padding-bottom:40px;}
+
+.gallery-image img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 6px 0px;
+}
+
+// eddie, June 29, 2016
+@media(min-width:767px) {
+    .navbar {
+        padding: 10px 0;
+        -webkit-transition: background .5s ease-in-out, padding .5s ease-in-out;
+        -moz-transition: background .5s ease-in-out, padding .5s ease-in-out;
+        transition: background .5s ease-in-out, padding .5s ease-in-out;
+    }
+    .top-nav-collapse {
+        padding: 0;
+        background:#ccc;
+    }
+}
+
+#footer .pull-right * {padding-left:6px;}

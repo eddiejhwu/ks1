@@ -1,0 +1,50 @@
+extends ../layouts/default
+
+//- for jq.fancybox
+block css
+	link(rel="stylesheet", href="/js/lib/fancybox/jquery.fancybox.css")
+
+//- intro
+block intro
+	.container
+		h1 Gallery
+
+//- content
+block content
+	.container
+		if galleries.length
+			each gallery in galleries
+				h3= gallery.name
+					if gallery.publishedDate
+						.pull-right.text-muted.small= gallery._.publishedDate.format('Do MMM YYYY')
+				
+				.row.gallery
+					if gallery.heroImage.exists
+						.col-sm-4.col-md-4.gallery-image: img(src=gallery._.heroImage.limit(680,680)).img-rounded
+						.col-sm-8.col-md-8: .row
+							each image, i in gallery.images
+								.col-xs-4.col-sm-4.col-md-3
+									a(href=image.limit(900,600), title=gallery.name + ' image ' + (i+1), rel=gallery.key).gallery-image
+										img(src=image.limit(300,300), alt=gallery.name + ' image ' + (i+1)).img-rounded
+					else
+						each image in gallery.images
+							.col-xs-6.col-sm-4.col-md-3.gallery-image: img(src=image.limit(300,300)).img-rounded
+		else
+			h3.text-muted There are no image galleries yet.
+
+
+//- js
+block js
+	script(src="/js/lib/fancybox/jquery.fancybox.pack.js")
+	script.
+		$(document).ready(function(){
+			$('a.gallery-image').fancybox({
+				prevEffect: 'none',
+				nextEffect: 'none',
+				closeBtn: false,
+				helpers: {
+					title: {},
+					buttons: {}
+				}
+			});
+		});
